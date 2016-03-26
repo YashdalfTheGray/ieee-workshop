@@ -3,6 +3,7 @@
 * [Photon Firmware API](https://docs.particle.io/reference/firmware/photon/)
 * [Particle REST API](https://docs.particle.io/reference/api/)
 * [Particle Store](https://store.particle.io/)
+* [Particle Build Web IDE](https://build.particle.io/build/)
 * [Cloud Data Logger tutorial](https://www.openhomeautomation.net/cloud-data-logger-particle-photon/)
 * [Using a TMP36](https://learn.adafruit.com/tmp36-temperature-sensor/using-a-temp-sensor)
 * [DS18B20 OneWire Digital Temperature Sensor](https://www.sparkfun.com/products/245)
