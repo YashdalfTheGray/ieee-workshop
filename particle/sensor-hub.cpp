@@ -7,10 +7,18 @@ int tempSensorValue = 0;
 double temperature = 0.0;
 
 void setup() {
-    Particle.variable("lightSensor", photoResistorValue);
-    Particle.variable("trimPot", potValue);
-    Particle.variable("temperature", temperature);
-    Particle.variable("version", versionString);
+    if (Particle.variable("lightSensor", photoResistorValue)) {
+        Particle.publish("Variable lightSensor published", "", 60, PRIVATE);
+    }
+    if (Particle.variable("trimPot", potValue)) {
+        Particle.publish("Variable trimPot published", "", 60, PRIVATE);
+    }
+    if (Particle.variable("temperature", temperature)) {
+        Particle.publish("Variable temperature published", "", 60, PRIVATE);
+    }
+    if (Particle.variable("version", versionString)) {
+        Particle.publish("Variable version published", "", 60, PRIVATE);
+    }
     
     pinMode(A0, INPUT);
     pinMode(A1, INPUT);
