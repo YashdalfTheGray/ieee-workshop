@@ -22,7 +22,7 @@ Please get these installed before you show up, it will make things a go a lot sm
 #### [`git`](https://git-scm.com/)
 `git` is a source control tool that we will use to download the code repository we'll be using for the workshop from the web to your computer. Check out the [site](https://git-scm.com/) and try the online [tutorial](https://try.github.io/levels/1/challenges/1) if you're interested in learning more.  
 
-#### [nodejs](https://www.nodejs.org/)
+#### [`nodejs`](https://www.nodejs.org/)
 We really are using nodejs on your machine for it's package management tool, `npm`. What is `npm`? It stands for Node Package Manager. In short, it allows us to give you a tiny file with a list of packages in it, then `npm` will read that file, run out to the web and download all of those things and install them in the code repository for our project to use. If you want to learn a little bit of node, a great resource is [nodeschool.io](www.nodeschool.io).
 
 #### Text Editor
