@@ -11,9 +11,9 @@
 * 4.7k Ohm resistor
 * Jumper wire for connections
 
-## Code
+## Schematics and Code
 
-The code for the Particle Photon is included in the `sensor-hub.cpp` file. 
+The circuit is built exactly like the circuit in the cloud data logger tutorial. The code for the Particle Photon is included in the `sensor-hub.cpp` file. 
 
 ## Particle resources
 
