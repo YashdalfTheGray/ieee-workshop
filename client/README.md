@@ -18,7 +18,7 @@ There are other commands listed under the `scripts` object of the `package.json`
 |------------------|--------------------------------------------------------------------|
 | `npm run tsc`    | Compile all the typescript files once                              |
 | `npm run tsc:w`  | Compile all the typescript files and recompile on changes          |
-| `npm run server` | Start a server locally at port 3000                                |
+| `npm run server` | Start a server locally on port 3000                                |
 | `npm run clean`  | Clean out the directory of any files not tracked by source control |
 
 The `postinstall` entry under `scripts` is something that `npm` will run automatically after an `npm install`. Also, `npm run clean` will clean out the folder that the compiled Typescript goes into and also any new files that are added to the folder but not tracked by source control which in this case is git. This is a dangerous command to run when actively developing and the changes haven't been committed to git.
