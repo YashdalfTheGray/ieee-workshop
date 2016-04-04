@@ -20,8 +20,8 @@
     ],
     "files": [
         "typings/browser.d.ts",
-        "app.component.ts",
-        "main.ts"
+        "app/app.component.ts",
+        "app/main.ts"
     ],
     "atom": {
         "rewriteTsconfig": false
