@@ -23,6 +23,8 @@
         "app/app.component.ts",
         "app/main.ts"
     ],
+    "compileOnSave": false,
+    "buildOnSave": false,
     "atom": {
         "rewriteTsconfig": false
     }
