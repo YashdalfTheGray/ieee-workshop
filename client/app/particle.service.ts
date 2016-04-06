@@ -16,12 +16,15 @@ export class ParticleService {
         return this.http.get('https://particle-proxy.herokuapp.com/api/v1/devices', reqOptions);
     }
 
-    getVariable(deviceId: string, variable: string): Observable<Response> {
+    getVariable(deviceId: string, variableName: string): Observable<Response> {
         var reqOptions = new RequestOptions({
             headers: new Headers({
                 'Authorization': 'Bearer ieee-sac-2016-workshop'
             })
         });
-        return this.http.get('https://particle-proxy.herokuapp.com/api/v1/devices', reqOptions);
+        return this.http.get(
+            'https://particle-proxy.herokuapp.com/api/v1/devices/' + deviceId + '/' + variableName,
+            reqOptions
+        );
     }
 }
