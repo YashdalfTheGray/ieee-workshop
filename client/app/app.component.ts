@@ -11,11 +11,12 @@ import { ParticleService } from './particle.service';
     ]
 })
 export class AppComponent implements OnInit {
+    private res: Array<Object>;
     constructor(public particleService: ParticleService) {}
 
     ngOnInit() {
         this.particleService.getDevices().subscribe((res: Response) => {
-            console.log(res.json());
+            this.res = res.json();
         });
     }
 }
