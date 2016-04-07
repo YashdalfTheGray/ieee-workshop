@@ -7,7 +7,6 @@ export class ParticleService {
     constructor(public http: Http) { }
 
     getDevices(): Observable<Response> {
-        console.log('getDevices() called!')
         var reqOptions = new RequestOptions({
             headers: new Headers({
                 'Authorization': 'Bearer ieee-sac-2016-workshop'
