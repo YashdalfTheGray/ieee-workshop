@@ -26,4 +26,6 @@ The Photon sends the data that it collects to the Particle servers. This enabled
 
 Angular 2 is the successor to the well-known Javascript framework, AngularJS. Angular 2 is a fully featured MV* framework which offers utilities to publish a well-designed, fast Single Page Application which is both desktop and mobile friendly while being totally cross-platform. Rockwell has embraced AngularJS and is starting to use AngularJS in more and more of products in our catalog.
 
-Angular 2 is in beta right now but it is seeing wide adoption so we thought that we would start with Angular 2. 
+Angular 2 is in beta right now but it is seeing wide adoption so we thought that we would start with Angular 2.
+
+**NOTE**: For full disclosure, our app will be written in Typescript. Typescript is just a static-typed version of Javascript. Angular 2 can be written in Javascript, ES2015 flavored Javscript, Dart or Typescript. The reason that we picked Typescript is because the framework itself is written in Typescript and compiled to Javscript or Dart. 
