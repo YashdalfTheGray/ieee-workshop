@@ -61,6 +61,45 @@ bootstrap(AppComponent, [
 ]);
 ```
 
-At this point, we should be able to run `npm start` and see IEEE SAC 2016 Workshop as the title in our browser. 
+At this point, we should be able to run `npm start` and see IEEE SAC 2016 Workshop as the title in our browser.
 
-## `particle.service.ts` and `device.types.ts`
+## `device.types.ts`
+
+Now we'll add some data interaction into the app. We'll first create a data type to store the data coming from Particle and then we'll create a service (a component without any view) to get that data for us. Add a file called `device.types.ts`. This file contains a type definition that is used to tell Typescript what kind of data we are expecting from Particle. Since it's a fair amount of typing, the contents of the file can be copied from [here](https://gist.githubusercontent.com/YashdalfTheGray/a80085637f61daa9cd1ec07ff29917f9/raw/21e1cda7784ab6c0a1b0de498f6a40fd9f5ef13f/device.types.ts).
+
+The syntax of note in `devices.types.ts` is the `export type Device` line. This creates a new type of variable that we can use called `Device` and lists out all the properties that it can have. Look at the last property in that type definition, the one called `variables`. The `?` before `:` means that it is optional and at any point, the variables member of this type may or may not be present on an instance. Similarly, the `DeviceVariables` type has three optional members.
+
+## `particle.service.ts`
+
+The service we are going to add is going to live under the file `particle.service.ts`. The skeleton for this service can be copied and pasted from [here](https://gist.githubusercontent.com/YashdalfTheGray/a80085637f61daa9cd1ec07ff29917f9/raw/b5f385a0b5bdc15a9f1c26d0c3820bc5d71a3b14/particle.service.ts). The skeleton helps us out with a couple of things. First, we tell Angular that this service can be injected as a dependency into other components in the app. We also pull in `Http`, `Response`, `RequestOptions` and `Headers` from `angular2/http` and `Observable` from `../node_modules/rxjs/Rx.d.ts`. We will use these to write code to talk to our Particle API.
+
+First, let's ask Angular to give us a reference to the `Http` object. That will happen in the class constructor. We need two pieces of data from the Particle API. A list of devices that are available to us for consuming data from and the actual data from these devices. For this we'll write two methods, `getDevices()` and `getVariable()`.
+
+One thing to keep in mind is that the Particle API requires authorization. We use the `RequestOptions` class to customize the headers that we are attaching to the request and the `Headers` class set custom headers to our request.
+
+The return value from our functions is `Observable<Response>`. An `Observable` is just a data stream. It can be represented by a timeline that has events happening every so often and at some point, it ends. We'll see how to get data out of an `Observable` when we start using our service.
+
+```javascript
+constructor(public http: Http) { }
+
+getDevices(): Observable<Response> {
+    var reqOptions = new RequestOptions({
+        headers: new Headers({
+            'Authorization': 'Bearer ieee-sac-2016-workshop'
+        })
+    });
+    return this.http.get('https://particle-proxy.herokuapp.com/api/v1/devices', reqOptions);
+}
+
+getVariable(deviceId: string, variableName: string): Observable<Response> {
+    var reqOptions = new RequestOptions({
+        headers: new Headers({
+            'Authorization': 'Bearer ieee-sac-2016-workshop'
+        })
+    });
+    return this.http.get(
+        'https://particle-proxy.herokuapp.com/api/v1/devices/' + deviceId + '/' + variableName,
+        reqOptions
+    );
+}
+```
