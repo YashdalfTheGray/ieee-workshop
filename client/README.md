@@ -4,6 +4,8 @@
 
 `node` and `git` will need to be installed. This can be verified by running `node --version` and `git --version` from the command line. This should print out the versions.
 
+Typescript and Typings will also need to be installed globally. This can be done by running `npm install --global typescript typings`. 
+
 ## Installation
 
 If you're in the project root, use `cd` to switch to the `client` directory and then run `npm install`.
