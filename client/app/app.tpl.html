@@ -1,2 +1,21 @@
 <h1>IEEE SAC 2016 Workshop</h1>
-<pre>{{res | json}}</pre>
+<table>
+    <tr>
+        <th>Sensor</th>
+        <th *ngFor="#dev of res">{{dev.name}}</th>
+    </tr>
+    <tr>
+        <td>Temperature</td>
+        <td *ngFor="#dev of res">{{dev.variables.temperature}}</td>
+    </tr>
+    <tr>
+        <td>Humidity</td>
+        <td *ngFor="#dev of res">{{dev.variables.humidity}}</td>
+    </tr>
+    <tr>
+        <td>Ambient Light</td>
+        <td *ngFor="#dev of res">{{dev.variables.lightSensor}}</td>
+    </tr>
+</table>
+
+<!-- <pre>{{res | json}}</pre> -->
