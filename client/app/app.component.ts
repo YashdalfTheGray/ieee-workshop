@@ -1,4 +1,5 @@
 import { Component, OnInit } from 'angular2/core';
+import { COMMON_DIRECTIVES } from 'angular2/common';
 import { Response } from 'angular2/http';
 
 import { ParticleService } from './particle.service';
@@ -7,6 +8,9 @@ import { Device } from './device.types';
 @Component({
     selector: 'ieee-app',
     templateUrl: 'app/app.tpl.html',
+    directives: [
+        COMMON_DIRECTIVES
+    ],
     providers: [
         ParticleService
     ]
