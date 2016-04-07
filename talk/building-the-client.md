@@ -26,7 +26,7 @@ We will be adding more styles to this file when we want to customize our table a
 
 ## `app.tpl.html`  and `app.component.ts`
 
-This will be the two parts of our main component. The top level, root component of our Angular 2 app. Let's start by importing `Component` from the `angular2/core` module and creating our first component annotation. The component annotation is accompanied by a class that is the logic driving that component. So add that next.
+These will be the two parts of our main component; the top level, root component of our Angular 2 app. Let's start by importing `Component` from the `angular2/core` module and creating our first component annotation. The component annotation is accompanied by a class that is the logic driving that component. So add that next.
 
 ```javascript
 import { Component } from 'angular2/core';
@@ -103,3 +103,22 @@ getVariable(deviceId: string, variableName: string): Observable<Response> {
     );
 }
 ```
+
+## Using `ParticleService` in `AppComponent`
+
+Let us start with importing `ParticleService` into our `AppComponent`.
+
+## Creating a `<table>` using `ngFor`
+
+This section is the last section required to have a fully functioning app, you should now be able to get data from the particle service and display it in a table!
+
+## Bonus Challenges
+
+1) Even though we have a stable app now, we need a way to get new data outside of just refreshing the page. So think about how to implement a refresh button without changing too much of the code in `AppComponent`.
+
+Hint: Handling [click events](http://learnangular2.com/events/) with Angular 2.
+
+2) Create an element on the page akin to an indicator. An indicator is one color (usually green) for when a some sensor value meets certain criteria and turns red when it doesn't.
+
+Hint: Look into [`ngClass`](https://angular.io/docs/ts/latest/api/common/NgClass-directive.html).
+Hint: There is a CSS property called `background-color` which takes a value like #164080. Use that with `ngClass`.
