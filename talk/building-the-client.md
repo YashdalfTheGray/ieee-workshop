@@ -123,4 +123,5 @@ Hint: Handling [click events](http://learnangular2.com/events/) with Angular 2.
 2) Create an element on the page akin to an indicator. An indicator is one color (usually green) for when a some sensor value meets certain criteria and turns red when it doesn't.
 
 Hint: Look into [`ngClass`](https://angular.io/docs/ts/latest/api/common/NgClass-directive.html).
+
 Hint: There is a CSS property called `background-color` which takes a value like #164080. Use that with `ngClass`.
