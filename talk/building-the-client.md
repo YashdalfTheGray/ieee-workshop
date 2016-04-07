@@ -80,27 +80,29 @@ One thing to keep in mind is that the Particle API requires authorization. We us
 The return value from our functions is `Observable<Response>`. An `Observable` is just a data stream. It can be represented by a timeline that has events happening every so often and at some point, it ends. We'll see how to get data out of an `Observable` when we start using our service.
 
 ```javascript
-constructor(public http: Http) { }
+export class ParticleService {
+    constructor(public http: Http) { }
 
-getDevices(): Observable<Response> {
-    var reqOptions = new RequestOptions({
-        headers: new Headers({
-            'Authorization': 'Bearer ieee-sac-2016-workshop'
-        })
-    });
-    return this.http.get('https://particle-proxy.herokuapp.com/api/v1/devices', reqOptions);
-}
+    getDevices(): Observable<Response> {
+        var reqOptions = new RequestOptions({
+            headers: new Headers({
+                'Authorization': 'Bearer ieee-sac-2016-workshop'
+            })
+        });
+        return this.http.get('https://particle-proxy.herokuapp.com/api/v1/devices', reqOptions);
+    }
 
-getVariable(deviceId: string, variableName: string): Observable<Response> {
-    var reqOptions = new RequestOptions({
-        headers: new Headers({
-            'Authorization': 'Bearer ieee-sac-2016-workshop'
-        })
-    });
-    return this.http.get(
-        'https://particle-proxy.herokuapp.com/api/v1/devices/' + deviceId + '/' + variableName,
-        reqOptions
-    );
+    getVariable(deviceId: string, variableName: string): Observable<Response> {
+        var reqOptions = new RequestOptions({
+            headers: new Headers({
+                'Authorization': 'Bearer ieee-sac-2016-workshop'
+            })
+        });
+        return this.http.get(
+            'https://particle-proxy.herokuapp.com/api/v1/devices/' + deviceId + '/' + variableName,
+            reqOptions
+        );
+    }
 }
 ```
 
