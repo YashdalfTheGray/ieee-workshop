@@ -139,7 +139,24 @@ Make sure to include a `<pre>{{res | json}}</pre>` in `app.tpl.html` so you can 
 
 Now that we have the devices from the Particle Service, let's use `getVariable()` to get actual data from the device. We already know the names of the variables that the devices can have so we have all the information that we need to get variable data from the Particle API. We will put this code inside the new event handler for `getDevices()` since we want to make sure that we have that data before asking the API for variable values that depend on the data from `getDevices()`.
 
-Simply put, we are going to loop over the devices that we have gotten, then for every variable that we want, we are going to call `getVariable(device.id, varName)`. This is again going to return an Observable and we're going to call `subscribe()` on it again. We're going to provide `subscribe()` a function that is capable of handing the responses from the `getVariable()` calls. 
+Simply put, we are going to loop over the devices that we have gotten, then for every variable that we want, we are going to call `getVariable(device.id, varName)`. This is again going to return an Observable and we're going to call `subscribe()` on it again. We're going to provide `subscribe()` a function that is capable of handing the responses from the `getVariable()` calls.
+
+When looping over the devices, we should make sure that since we're going to put these sensor values under the `variables` object inside a `Devices` object, we should have a variables object first. We can just assign an empty object to `device.variables` for now and we'll fill it in as the reponses from `getVariable()` come in. \
+
+Getting back to the response from `getVariable()`, let's start with converting the response for each variable to JSON. The response object should then have a `name` and a `result` property on it. We'll use those to add data to the already existing array of devices that we are storing. We can add data to an object using the bracket notation to put it at variable key. We'll use this to add our three sensor readings to the `res` object.
+
+```javascript
+// Add this snippet after this.res = res.json();
+this.res.forEach(device => {
+    device.variables = {};
+    ['temperature', 'lightSensor', 'humidity'].forEach((sensor: string) => {
+        this.particleService.getVariable(device.id, sensor).subscribe((res: Response) => {
+            var sensorResponse = res.json();
+            device.variables[sensorResponse.name] = sensorResponse.result;
+        });
+    });
+});
+```
 
 ## Creating a `<table>` using `ngFor`
 
