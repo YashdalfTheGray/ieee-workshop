@@ -108,7 +108,38 @@ export class ParticleService {
 
 ## Using `ParticleService` in `AppComponent`
 
-Let us start with importing `ParticleService` into our `AppComponent`.
+Let us start with importing `ParticleService` into our `AppComponent`. Once we do that, we'll get access to methods that go and get data from the Particle API for us. When is the correct time to do this? We want to make sure that our component's logic is loaded as well as the HTML template is loaded so that we can put data in the browser.
+
+For that, we're going to import `OnInit` from `'angular2/core'`. `OnInit` let's us tell Angular to execute a bit of code once our component is done loading. All we have to do is write a method called `ngOnInit` and Angular takes care of the rest. Let's create `ngOnInit` now and put a call to `this.particleService.getDevices()` in it. As has been stated before, this call returns an `Observable` which we can get data from using `subscribe()`. We will give `subscribe()` a function that handles new data coming in. For now, we'll just convert it to JSON using `res.json()` and store it in a class variable called `res`.
+
+We will also need to import the `Device` type that we created earlier. The data coming from `getDevices()` will be returned as a `Device` type. So we declare a `res` variable and tell Typescript that we expect it to be an `Array` of type `Device`. We will also use the class constructor to ask Angular to give us a reference to a `ParticleService` instance which we are going to call `particleService`. Notice the small change in the case.
+
+```javascript
+import { Component, OnInit } from 'angular2/core';
+
+import { ParticleService } from './particle.service';
+import { Device } from './device.types';
+
+export class AppComponent implements OnInit {
+    private res: Array<Device>;
+
+    constructor(public particleService: ParticleService) {}
+
+    ngOnInit() {
+        this.particleService.getDevices().subscribe((res: Response) => {
+            this.res = res.json();
+        });
+    }
+}
+```
+
+Make sure to include a `<pre>{{res | json}}</pre>` in `app.tpl.html` so you can see the response from the Particle API. We'll make this look better later, right now, let's finish up getting all the data.
+
+## Getting Variable Values
+
+Now that we have the devices from the Particle Service, let's use `getVariable()` to get actual data from the device. We already know the names of the variables that the devices can have so we have all the information that we need to get variable data from the Particle API. We will put this code inside the new event handler for `getDevices()` since we want to make sure that we have that data before asking the API for variable values that depend on the data from `getDevices()`.
+
+Simply put, we are going to loop over the devices that we have gotten, then for every variable that we want, we are going to call `getVariable(device.id, varName)`. This is again going to return an Observable and we're going to call `subscribe()` on it again. We're going to provide `subscribe()` a function that is capable of handing the responses from the `getVariable()` calls. 
 
 ## Creating a `<table>` using `ngFor`
 
