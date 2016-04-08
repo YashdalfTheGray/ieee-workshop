@@ -120,7 +120,7 @@ This section is the last section required to have a fully functioning app, you s
 
 Hint: Handling [click events](http://learnangular2.com/events/) with Angular 2.
 
-2) Create an element on the page akin to an indicator. An indicator is one color (usually green) for when a some sensor value meets certain criteria and turns red when it doesn't.
+2) Create an element on the page akin to an indicator. An indicator is one color (usually green) for when some sensor value meets certain criteria and turns another color (usually red) when it doesn't.
 
 Hint: Look into [`ngClass`](https://angular.io/docs/ts/latest/api/common/NgClass-directive.html).
 
