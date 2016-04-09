@@ -189,6 +189,28 @@ We will do much of the same for the sensor values too but instead of using the t
 
 This section is the last section required to have a fully functioning app, you should now be able to get data from the particle service and display it in a table!
 
+## Styling the `<table>`
+
+As it stands, our data display table looks a little plain. We will put some color in and clean up the layout too. For this, we will use some CSS classes. Open up `styles.css` and let's add styles for the `<td>` and `<th>` elements. There are properties that we would like to give both elements and there are properties that we want to only the `<th>` element to have. In CSS, to create a style rule, we put a selector first, and then a set of rules enclosed by `{}`.
+
+For this tutorial, we will style all of the `<td>` and `<th>` elements with a width that is twice the height, a thin colored border, center aligned text and some padding to go around the element. For the `<th>` elements only, we will set the background color and the border colors to be different from the rest of the table and add more padding to them too.
+
+```css
+td, th {
+  width: 4rem;
+  height: 2rem;
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 8px;
+}
+
+th {
+  background: lightblue;
+  border-color: lightblue;
+  padding: 16px;
+}
+```
+
 ## Bonus Challenges
 
 1) Even though we have a stable app now, we need a way to get new data outside of just refreshing the page. So think about how to implement a refresh button without changing too much of the code in `AppComponent`.
