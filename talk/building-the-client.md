@@ -40,7 +40,7 @@ export class AppComponent {
 }
 ```
 
-The HTML part of this component will be the display that the component will have. For now, we'll just add a heading into the HTML template so that we can get started running our app. We'll add more to this later.
+The HTML part of this component will be the display that the component will have. For now, we will just add a heading into the HTML template so that we can get started running our app. We will add more to this later.
 
 ```html
 <h1>IEEE SAC 2016 Workshop</h1>
@@ -48,7 +48,7 @@ The HTML part of this component will be the display that the component will have
 
 ## `main.ts`
 
-This file is what the script from `index.html` will load up. We have to ask Angular 2 to bootstrap our app so that it can be displayed and the we can run the logic in our newly created component. We are also going to be talking to the Particle API so we need a way to communicate via HTTP. Angular provides us with HTTP services out of the box so we'll leverage that.
+This file is what the script from `index.html` will load up. We have to ask Angular 2 to bootstrap our app so that it can be displayed and the we can run the logic in our newly created component. We are also going to be talking to the Particle API so we need a way to communicate via HTTP. Angular provides us with HTTP services out of the box so we will leverage that.
 
 ```javascript
 import { bootstrap } from 'angular2/platform/browser';
@@ -65,7 +65,7 @@ At this point, we should be able to run `npm start` and see IEEE SAC 2016 Worksh
 
 ## `device.types.ts`
 
-Now we'll add some data interaction into the app. We'll first create a data type to store the data coming from Particle and then we'll create a service (a component without any view) to get that data for us. Add a file called `device.types.ts`. This file contains a type definition that is used to tell Typescript what kind of data we are expecting from Particle. Since it's a fair amount of typing, the contents of the file can be copied from [here](https://gist.githubusercontent.com/YashdalfTheGray/a80085637f61daa9cd1ec07ff29917f9/raw/21e1cda7784ab6c0a1b0de498f6a40fd9f5ef13f/device.types.ts).
+Now we will add some data interaction into the app. We will first create a data type to store the data coming from Particle and then we will create a service (a component without any view) to get that data for us. Add a file called `device.types.ts`. This file contains a type definition that is used to tell Typescript what kind of data we are expecting from Particle. Since it's a fair amount of typing, the contents of the file can be copied from [here](https://gist.githubusercontent.com/YashdalfTheGray/a80085637f61daa9cd1ec07ff29917f9/raw/21e1cda7784ab6c0a1b0de498f6a40fd9f5ef13f/device.types.ts).
 
 The syntax of note in `devices.types.ts` is the `export type Device` line. This creates a new type of variable that we can use called `Device` and lists out all the properties that it can have. Look at the last property in that type definition, the one called `variables`. The `?` before `:` means that it is optional and at any point, the variables member of this type may or may not be present on an instance. Similarly, the `DeviceVariables` type has three optional members.
 
@@ -73,11 +73,11 @@ The syntax of note in `devices.types.ts` is the `export type Device` line. This 
 
 The service we are going to add is going to live under the file `particle.service.ts`. The skeleton for this service can be copied and pasted from [here](https://gist.githubusercontent.com/YashdalfTheGray/a80085637f61daa9cd1ec07ff29917f9/raw/b5f385a0b5bdc15a9f1c26d0c3820bc5d71a3b14/particle.service.ts). The skeleton helps us out with a couple of things. First, we tell Angular that this service can be injected as a dependency into other components in the app. We also pull in `Http`, `Response`, `RequestOptions` and `Headers` from `angular2/http` and `Observable` from `../node_modules/rxjs/Rx.d.ts`. We will use these to write code to talk to our Particle API.
 
-First, let's ask Angular to give us a reference to the `Http` object. That will happen in the class constructor. We need two pieces of data from the Particle API. A list of devices that are available to us for consuming data from and the actual data from these devices. For this we'll write two methods, `getDevices()` and `getVariable()`.
+First, let's ask Angular to give us a reference to the `Http` object. That will happen in the class constructor. We need two pieces of data from the Particle API. A list of devices that are available to us for consuming data from and the actual data from these devices. For this we will write two methods, `getDevices()` and `getVariable()`.
 
 One thing to keep in mind is that the Particle API requires authorization. We use the `RequestOptions` class to customize the headers that we are attaching to the request and the `Headers` class set custom headers to our request.
 
-The return value from our functions is `Observable<Response>`. An `Observable` is just a data stream. It can be represented by a timeline that has events happening every so often and at some point, it ends. We'll see how to get data out of an `Observable` when we start using our service.
+The return value from our functions is `Observable<Response>`. An `Observable` is just a data stream. It can be represented by a timeline that has events happening every so often and at some point, it ends. We will see how to get data out of an `Observable` when we start using our service.
 
 ```javascript
 export class ParticleService {
@@ -108,9 +108,9 @@ export class ParticleService {
 
 ## Using `ParticleService` in `AppComponent`
 
-Let us start with importing `ParticleService` into our `AppComponent`. Once we do that, we'll get access to methods that go and get data from the Particle API for us. When is the correct time to do this? We want to make sure that our component's logic is loaded as well as the HTML template is loaded so that we can put data in the browser.
+Let us start with importing `ParticleService` into our `AppComponent`. Once we do that, we will get access to methods that go and get data from the Particle API for us. When is the correct time to do this? We want to make sure that our component's logic is loaded as well as the HTML template is loaded so that we can put data in the browser.
 
-For that, we're going to import `OnInit` from `'angular2/core'`. `OnInit` let's us tell Angular to execute a bit of code once our component is done loading. All we have to do is write a method called `ngOnInit` and Angular takes care of the rest. Let's create `ngOnInit` now and put a call to `this.particleService.getDevices()` in it. As has been stated before, this call returns an `Observable` which we can get data from using `subscribe()`. We will give `subscribe()` a function that handles new data coming in. For now, we'll just convert it to JSON using `res.json()` and store it in a class variable called `res`.
+For that, we are going to import `OnInit` from `'angular2/core'`. `OnInit` let's us tell Angular to execute a bit of code once our component is done loading. All we have to do is write a method called `ngOnInit` and Angular takes care of the rest. Let's create `ngOnInit` now and put a call to `this.particleService.getDevices()` in it. As has been stated before, this call returns an `Observable` which we can get data from using `subscribe()`. We will give `subscribe()` a function that handles new data coming in. For now, we will just convert it to JSON using `res.json()` and store it in a class variable called `res`.
 
 We will also need to import the `Device` type that we created earlier. The data coming from `getDevices()` will be returned as a `Device` type. So we declare a `res` variable and tell Typescript that we expect it to be an `Array` of type `Device`. We will also use the class constructor to ask Angular to give us a reference to a `ParticleService` instance which we are going to call `particleService`. Notice the small change in the case.
 
@@ -133,17 +133,17 @@ export class AppComponent implements OnInit {
 }
 ```
 
-Make sure to include a `<pre>{{res | json}}</pre>` in `app.tpl.html` so you can see the response from the Particle API. We'll make this look better later, right now, let's finish up getting all the data.
+Make sure to include a `<pre>{{res | json}}</pre>` in `app.tpl.html` so you can see the response from the Particle API. We will make this look better later, right now, let's finish up getting all the data.
 
 ## Getting Variable Values
 
 Now that we have the devices from the Particle Service, let's use `getVariable()` to get actual data from the device. We already know the names of the variables that the devices can have so we have all the information that we need to get variable data from the Particle API. We will put this code inside the new event handler for `getDevices()` since we want to make sure that we have that data before asking the API for variable values that depend on the data from `getDevices()`.
 
-Simply put, we are going to loop over the devices that we have gotten, then for every variable that we want, we are going to call `getVariable(device.id, varName)`. This is again going to return an Observable and we're going to call `subscribe()` on it again. We're going to provide `subscribe()` a function that is capable of handing the responses from the `getVariable()` calls.
+Simply put, we are going to loop over the devices that we have gotten, then for every variable that we want, we are going to call `getVariable(device.id, varName)`. This is again going to return an Observable and we are going to call `subscribe()` on it again. We are going to provide `subscribe()` a function that is capable of handing the responses from the `getVariable()` calls.
 
-When looping over the devices, we should make sure that since we're going to put these sensor values under the `variables` object inside a `Devices` object, we should have a variables object first. We can just assign an empty object to `device.variables` for now and we'll fill it in as the reponses from `getVariable()` come in. \
+When looping over the devices, we should make sure that since we are going to put these sensor values under the `variables` object inside a `Devices` object, we should have a variables object first. We can just assign an empty object to `device.variables` for now and we will fill it in as the reponses from `getVariable()` come in. \
 
-Getting back to the response from `getVariable()`, let's start with converting the response for each variable to JSON. The response object should then have a `name` and a `result` property on it. We'll use those to add data to the already existing array of devices that we are storing. We can add data to an object using the bracket notation to put it at variable key. We'll use this to add our three sensor readings to the `res` object.
+Getting back to the response from `getVariable()`, let's start with converting the response for each variable to JSON. The response object should then have a `name` and a `result` property on it. We will use those to add data to the already existing array of devices that we are storing. We can add data to an object using the bracket notation to put it at variable key. We will use this to add our three sensor readings to the `res` object.
 
 ```javascript
 // Add this snippet after this.res = res.json();
