@@ -26,7 +26,7 @@ We will be adding more styles to this file when we want to customize our table a
 
 ## `app.tpl.html`  and `app.component.ts`
 
-These will be the two parts of our main component; the top level, root component of our Angular 2 app. Let's start by importing `Component` from the `angular2/core` module and creating our first component annotation. The component annotation is accompanied by a class that is the logic driving that component. So add that next.
+These will be the two parts of our main component; the top level, and root component of our Angular 2 app. Let's start by importing `Component` from the `angular2/core` module and creating our first component annotation. The component annotation is accompanied by a class that is the logic driving that component. So add that next.
 
 ```javascript
 import { Component } from 'angular2/core';
@@ -48,7 +48,7 @@ The HTML part of this component will be the display that the component will have
 
 ## `main.ts`
 
-This file is what the script from `index.html` will load up. We have to ask Angular 2 to bootstrap our app so that it can be displayed and the we can run the logic in our newly created component. We are also going to be talking to the Particle API so we need a way to communicate via HTTP. Angular provides us with HTTP services out of the box so we will leverage that.
+This file is what the script from `index.html` will load up. We have to ask Angular 2 to bootstrap our app so that it can be displayed and then we can run the logic in our newly created component. We are also going to be talking to the Particle API so we need a way to communicate via HTTP. Angular provides us with HTTP services out of the box so we will leverage that.
 
 ```javascript
 import { bootstrap } from 'angular2/platform/browser';
@@ -75,7 +75,7 @@ The service we are going to add is going to live under the file `particle.servic
 
 First, let's ask Angular to give us a reference to the `Http` object. That will happen in the class constructor. We need two pieces of data from the Particle API. A list of devices that are available to us for consuming data from and the actual data from these devices. For this we will write two methods, `getDevices()` and `getVariable()`.
 
-One thing to keep in mind is that the Particle API requires authorization. We use the `RequestOptions` class to customize the headers that we are attaching to the request and the `Headers` class set custom headers to our request.
+One thing to keep in mind is that the Particle API requires authorization. We use the `RequestOptions` class to customize the headers that we are attaching to the request and the `Headers` class to set custom headers to our request.
 
 The return value from our functions is `Observable<Response>`. An `Observable` is just a data stream. It can be represented by a timeline that has events happening every so often and at some point, it ends. We will see how to get data out of an `Observable` when we start using our service.
 
