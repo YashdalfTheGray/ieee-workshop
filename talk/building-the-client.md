@@ -160,6 +160,33 @@ this.res.forEach(device => {
 
 ## Creating a `<table>` using `ngFor`
 
+Now that we have the data that we need from Particle, we will work on getting that data to display in a table. For this, we are going to use `ngFor`. `ngFor` can be used to create a template that will be repeated with different data from a set or a list. You can think of it as a `for` loop for HTML templates. We start by adding a `<table>` tag to `app.tpl.html`. We are going to need a header row and one row each for temperature, humidity and ambient light. We can create a table row by using the `<tr>` element. Let's add four of them as children of the `<table>` element.
+
+For the table headers, we can use the `<th>` element. A `<th>` element has to go under a `<tr>` element. We should add three `<th>` elements to the first `<tr>` element in our table but we will only need two. This is because we are going to ask `ngFor` to the rest of the work for us. Add an element for the sensor heading and then add an element that loops over the devices that we got in the last step and makes each device's name the heading.
+
+We will do much of the same for the sensor values too but instead of using the table header tag, we will use the table data or `<td>` tag. We will create a `<td>` tag for temperature under the second `<tr>` element in our table and then use another `<td>` element with an `ngFor` to print out the sensor values.
+
+```html
+<table>
+    <tr>
+        <th>Sensor</th>
+        <th *ngFor="#dev of res">{{dev.name}}</th>
+    </tr>
+    <tr>
+        <td>Temperature</td>
+        <td *ngFor="#dev of res">{{dev.variables.temperature}}&deg;F</td>
+    </tr>
+    <tr>
+        <td>Humidity</td>
+        <td *ngFor="#dev of res">{{dev.variables.humidity}}&#37;</td>
+    </tr>
+    <tr>
+        <td>Ambient Light</td>
+        <td *ngFor="#dev of res">{{dev.variables.lightSensor}}</td>
+    </tr>
+</table>
+```
+
 This section is the last section required to have a fully functioning app, you should now be able to get data from the particle service and display it in a table!
 
 ## Bonus Challenges
