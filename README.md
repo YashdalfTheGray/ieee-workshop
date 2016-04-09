@@ -38,7 +38,11 @@ You're going to need something to write code with in the workshop. While all of 
 
 We will use Angular2 and Typescript for this workshop. Think of Typescript as a superset of Javasript so all Javascript is legal Typescript. If you're interested in learning a little more about either of these subjects, we have selected some tutorials to help you get started.
 
-* [Javascript](http://nodeschool.io/#workshoppers) - check out the `javascripting` tutorial to learn a bit about the language. You are going to need `node` and `git` installed for this tutorial so view the tutorial after getting these installed. 
+* [Javascript](http://nodeschool.io/#workshoppers) - check out the `javascripting` tutorial to learn a bit about the language. You are going to need `node` and `git` installed for this tutorial so view the tutorial after getting these installed.
 * [Javascript CodeCombat](https://codecombat.com/play) - a great tool to start learning programming (in general) while also casually gaming. It supports python and javascript (and a couple of other languages) syntaxes.
 * [Angular2 quickstart](https://angular.io/docs/ts/latest/quickstart.html) - the Angular2 quickstart really only takes 5-10 minutes to run through and it gives an overview of what Angular2 is and how to get started writing code in it. It also gives a basic introduction to Typescript and the ES6 syntax for JavaScript.
 * [Typescript](http://www.typescriptlang.org/docs/tutorial.html) - This is a Typescript quickstart tutorial. Like the Angular2 quickstart, it also doesn't take long and it gives a crash course on what Typescript is and the features.
+
+## Post Workshop Survey
+
+Please help us improve our workshops by taking a small 10-question [survey](http://goo.gl/forms/6L4ceYishh).
